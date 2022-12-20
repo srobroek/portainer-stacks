@@ -112,5 +112,6 @@ services:
       - 9091:9091
 
     labels:
-      - "traefik.http.routers.guacamole.rule=Host(`guac.vxsan.com`)"
-      - "traefik.http.routers.guacamole.tls=true"      
+      - "traefik.http.routers.authelia.rule=Host(`authelia.vxsan.com`)"
+      - "traefik.http.routers.authelia.tls=true"     
+      - "traefik.enable=true"
