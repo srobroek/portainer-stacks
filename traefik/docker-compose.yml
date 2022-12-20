@@ -128,7 +128,7 @@ services:
       - "traefik.http.routers.authelia-rtr.entrypoints=https"
       - "traefik.http.routers.authelia-rtr.rule=HostHeader(`authelia.vxsan.com`)"
       ## Middlewares
-      - "traefik.http.routers.authelia-rtr.middlewares=chain-authelia@file"
+      #- "traefik.http.routers.authelia-rtr.middlewares=chain-no-auth@file"
       ## HTTP Services
       #- "traefik.http.routers.authelia-rtr.service=authelia-svc"
       #- "traefik.http.services.authelia-svc.loadbalancer.server.port=9091"
