@@ -23,7 +23,7 @@ services:
   authelia:
     image: docker.io/authelia/authelia:latest
     #container_name: authelia
-    environment:
+    #environment:
     volumes:
       - /portainer/Files/AppData/Config/Authelia:/config
     restart: unless-stopped
