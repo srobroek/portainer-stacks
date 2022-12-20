@@ -126,5 +126,5 @@ services:
       ## Middlewares
       - "traefik.http.routers.authelia-rtr.middlewares=chain-authelia@file"
       ## HTTP Services
-      - "traefik.http.routers.authelia-rtr.service=authelia-svc"
-      - "traefik.http.services.authelia-svc.loadbalancer.server.port=9091"
+      #- "traefik.http.routers.authelia-rtr.service=authelia-svc"
+      #- "traefik.http.services.authelia-svc.loadbalancer.server.port=9091"
