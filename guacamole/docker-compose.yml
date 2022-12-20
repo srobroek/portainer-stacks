@@ -1,9 +1,7 @@
 version: "3.3"
 networks:
-  default:
-    name: private
+  swag-proxy_private:
     external: true
-
 services:
   # guacd
   guacd:
