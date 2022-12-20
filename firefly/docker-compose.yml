@@ -74,14 +74,15 @@ services:
       - app
     labels:
       - "traefik.enable=true"
-      ## HTTP Routers
-      - "traefik.http.routers.fidi-rtr.entrypoints=https"
-      - "traefik.http.routers.fidi-rtr.rule=HostHeader(`fidi.vxsan.com`)"
+      ## TCP Routers
+      - "traefik.tcp.routers.fidi-rtr.entrypoints=https"
+      - "traefik.tcp.routers.fidi-rtr.rule=HostSNI(`fidi.vxsan.com`)"
+      - "traefik.tcp.routers.fidi-rtr.tls=true"
       ## Middlewares
       #- 'traefik.http.middlewares.authelia.forwardAuth.address=http://authelia:9091/api/verify?rd=https%3A%2F%2Fauth.vxsan.com%2F'
       #- 'traefik.http.middlewares.authelia.forwardAuth.trustForwardHeader=true'
       #- 'traefik.http.middlewares.authelia.forwardAuth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email'
-      - "traefik.http.routers.fidi-rtr.middlewares=chain-fidi@file"
+      # - "traefik.http.routers.fidi-rtr.middlewares=chain-fidi@file"
       ## HTTP Services
       #- "traefik.http.routers.guac-rtr.service=guac_guacamole-svc"
       # - "traefik.http.services.guac-svc.loadbalancer.server.port=8080"          
