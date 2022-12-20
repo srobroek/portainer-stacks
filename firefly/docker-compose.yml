@@ -1,6 +1,7 @@
 version: '3'
 networks:
-  t2_internal:
+  default:
+    name: t2_internal
     external: true
 services:
   app:
