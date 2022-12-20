@@ -2,10 +2,8 @@ version: "3"
 
 networks:
   private:
-    name: private
     driver: overlay
   public:
-    name: public
     driver: overlay
 
 services:
