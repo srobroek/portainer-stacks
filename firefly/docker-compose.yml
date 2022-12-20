@@ -21,7 +21,7 @@ services:
       - 8082:8080
     depends_on:
       - db
-    hostname: firefly_app
+
   db:
     image: mariadb:10.5.4    
     restart: always
@@ -33,7 +33,7 @@ services:
       - MYSQL_USER
     volumes:
       - /portainer/Files/AppData/Config/Firefly/db:/var/lib/mysql
-    hostname: firefly_db
+
   fidi:
     image: fireflyiii/data-importer:latest
     restart: always
