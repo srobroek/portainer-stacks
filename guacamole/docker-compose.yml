@@ -45,8 +45,3 @@ services:
     restart: always
     labels:
       - "traefik.http.routers.whoami.rule=Host(`guac.vxsan.com`)"
-
-networks:
-  default:
-    name: swag-proxy_private
-    external: true
