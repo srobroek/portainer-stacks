@@ -3,7 +3,7 @@ version: "3.9"
 networks:
   t2_proxy:
     name: t2_proxy
-    driver: bridge
+    driver: overlay
   default:
     driver: bridge
 
@@ -114,7 +114,7 @@ services:
     #environment:
     volumes:
       - /portainer/Files/AppData/Config/Authelia:/config
-    restart: unless-stopped
+
 
     networks:
       - t2_proxy
