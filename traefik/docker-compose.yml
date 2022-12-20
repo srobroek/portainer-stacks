@@ -70,7 +70,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro # If you use Docker Socket Proxy, comment this line out
       - /portainer/Files/AppData/Config/traefik2/acme/acme.json:/acme.json # cert location - you must create this empty file and change permissions to 600
       - /portainer/Files/AppData/Config/traefik2/logs:/logs # for fail2ban or crowdsec
-#      - $DOCKERDIR/shared:/shared        
+    #      - $DOCKERDIR/shared:/shared        
      environment:
       - TZ=$TZ
       - CF_API_EMAIL=$CLOUDFLARE_EMAIL
