@@ -112,6 +112,7 @@ services:
       - 9091:9091
 
     labels:
-      - "traefik.http.routers.authelia.rule=Host(`authelia.vxsan.com`)"
-      - "traefik.http.routers.authelia.tls=true"     
+      - "traefik.http.routers.traefik-rtr.rule=Host(`authelia.vxsan.com`)"
+      - "traefik.http.routers.traefik-rtr.tls=true"     
+      - "traefik.http.routers.traefik-rtr.middlewares=chain-no-auth@file"
       - "traefik.enable=true"
