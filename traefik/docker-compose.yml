@@ -110,9 +110,13 @@ services:
     restart: unless-stopped
     ports:
       - 9091:9091
-
-    labels:
-      - "traefik.http.routers.authelia.rule=Host(`authelia.vxsan.com`)"
-      - "traefik.http.routers.authelia.tls=true"     
-      - "traefik.http.routers.authelia.middlewares=chain-no-auth@file"
-      - "traefik.enable=true"
+  labels:
+    - "traefik.enable=true"
+    ## HTTP Routers
+    - "traefik.http.routers.authelia-rtr.entrypoints=https"
+    - "traefik.http.routers.authelia-rtr.rule=HostHeader(`authelia.vxsan.com`)"
+    ## Middlewares
+    - "traefik.http.routers.authelia-rtr.middlewares=chain-authelia@file"
+    ## HTTP Services
+    - "traefik.http.routers.authelia-rtr.service=authelia-svc"
+    - "traefik.http.services.authelia-svc.loadbalancer.server.port=9091"
