@@ -45,15 +45,10 @@ services:
       - SPECTRE_SECRET
       - TRUSTED_PROXIES
       - VANITY_URL
-    ports:
+    ports: 
       - 8081:8080
     depends_on:
       - app
 #volumes:
 #  firefly_iii_upload:
 #  firefly_iii_db:
-
-networks:
-  default:
-    name: swag-proxy_private
-    external: true
