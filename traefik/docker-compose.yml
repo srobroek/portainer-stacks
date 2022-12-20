@@ -1,12 +1,19 @@
 version: "3.9"
 
+networks:
+  t2_proxy:
+    name: t2_proxy
+    driver: bridge
+  default:
+    driver: bridge
 
 services:
 
 # Traefik 2 - Reverse Proxy
   traefik:
     container_name: traefik
-
+    networks:
+      t2_proxy:
     security_opt:
       - no-new-privileges:true
     restart: always
@@ -110,6 +117,8 @@ services:
     restart: unless-stopped
     ports:
       - 9091:9091
+    networks:
+      t2_proxy:
   labels:
     - "traefik.enable=true"
     ## HTTP Routers
