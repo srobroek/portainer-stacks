@@ -43,6 +43,8 @@ services:
 ## enable next line when using nginx
     #- 8080/tcp
     restart: always
+    labels:
+      -"traefik.http.routers.whoami.rule=Host(`guac.vxsan.com`)"    
 
 networks:
   default:
