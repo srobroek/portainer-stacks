@@ -23,7 +23,7 @@ services:
       - db
     container_name: firefly
   db:
-    image: mariadb    
+    image: mariadb:10.5.4    
     restart: always
    # env_file: stack.env
     environment: 
