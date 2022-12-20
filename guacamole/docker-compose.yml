@@ -20,7 +20,7 @@ services:
     restart: always
     volumes:
     volumes:
-    - ./init:/docker-entrypoint-initdb.d:ro
+    - /portainer/Files/AppData/Config/Guacamole/db/init:/docker-entrypoint-initdb.d:ro
     - /portainer/Files/AppData/Config/Guacamole/db:/var/lib/postgresql/data:rw
 
   # guacamole
