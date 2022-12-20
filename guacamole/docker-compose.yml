@@ -12,10 +12,10 @@ services:
   postgres:
 #    container_name: postgres_guacamole_compose
     environment:
-      PGDATA
-      POSTGRES_DB
-      POSTGRES_PASSWORD
-      POSTGRES_USER
+      - PGDATA
+      - POSTGRES_DB
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
     image: postgres:13.4-buster
     restart: always
     volumes:
@@ -30,11 +30,11 @@ services:
     - guacd
     - postgres
     environment:
-      GUACD_HOSTNAME
-      POSTGRES_DATABASE
-      POSTGRES_HOSTNAME
-      POSTGRES_PASSWORD
-      POSTGRES_USER
+      - GUACD_HOSTNAME
+      - POSTGRES_DATABASE
+      - POSTGRES_HOSTNAME
+      - POSTGRES_PASSWORD
+      - POSTGRES_USER
     image: guacamole/guacamole
     links:
     - guacd
