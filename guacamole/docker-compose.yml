@@ -37,7 +37,7 @@ services:
     image: guacamole/guacamole
     links:
     - guacd
-    ports:
+   # ports:
 ## enable next line if not using nginx
     # - 8083:8080/tcp # Guacamole is on :8080/guacamole, not /.
 ## enable next line when using nginx
