@@ -1,16 +1,12 @@
 version: "3.9"
 
-networks:
-  t2_proxy:
-    driver: overlay
 
 services:
 
 # Traefik 2 - Reverse Proxy
   traefik:
     container_name: traefik
-    networks:
-      - t2_proxy
+
     security_opt:
       - no-new-privileges:true
     restart: always
@@ -114,5 +110,7 @@ services:
     restart: unless-stopped
     ports:
       - 9091:9091
-    networks:
-      - t2_proxy
+
+    labels:
+      - "traefik.http.routers.guacamole.rule=Host(`guac.vxsan.com`)"
+      - "traefik.http.routers.guacamole.tls=true"      
