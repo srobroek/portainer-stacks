@@ -47,4 +47,4 @@ services:
       - "traefik.http.routers.guacamole.rule=Host(`guac.vxsan.com`)"
       - "traefik.http.routers.guacamole.tls=true"
       - "traefik.enable=true"
-      - "traefik.http.routers.guacamole.middlewares=chain-authelia@file"
+      - "traefik.http.routers.guacamole.middlewares=chain-no-auth@file"
