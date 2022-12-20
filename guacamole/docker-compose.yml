@@ -1,8 +1,4 @@
 version: "3.3"
-networks:
-  default:
-    name: swag-proxy_private
-    external: true
 services:
   # guacd
   guacd:
@@ -22,7 +18,6 @@ services:
       - POSTGRES_USER
     image: postgres:13.4-buster
     restart: always
-    volumes:
     volumes:
     - /portainer/Files/AppData/Config/Guacamole/db/init:/docker-entrypoint-initdb.d:ro
     - /portainer/Files/AppData/Config/Guacamole/db:/var/lib/postgresql/data:rw
@@ -48,3 +43,8 @@ services:
 ## enable next line when using nginx
     #- 8080/tcp
     restart: always
+
+networks:
+  default:
+    name: swag-proxy_private
+    external: true

@@ -1,8 +1,4 @@
 version: '3'
-networks:
-  default:
-    name: swag-proxy_private
-    external: true
 services:
   app:
     image: fireflyiii/core:latest
@@ -56,3 +52,8 @@ services:
 #volumes:
 #  firefly_iii_upload:
 #  firefly_iii_db:
+
+networks:
+  default:
+    name: swag-proxy_private
+    external: true
