@@ -2,12 +2,13 @@ version: '3'
 networks:
   t2_internal:
     external: true
-  default:
-    name: t2_internal
+
 services:
   app:
     image: fireflyiii/core:latest
     restart: always
+    networks:
+      - t2_internal
     volumes:
       - /portainer/Files/AppData/Config/Firefly/upload:/var/www/html/storage/upload
     environment:
@@ -43,6 +44,8 @@ services:
   db:
     image: mariadb:10.5.4    
     restart: always
+    networks:
+      - t2_internal    
    # env_file: stack.env
     environment: 
       - MYSQL_DATABASE
@@ -55,6 +58,8 @@ services:
   fidi:
     image: fireflyiii/data-importer:latest
     restart: always
+    networks:
+      - t2_internal    
 #    env_file: stack.env
     environment:
       - FIREFLY_III_ACCESS_TOKEN
