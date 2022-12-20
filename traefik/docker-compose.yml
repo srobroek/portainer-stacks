@@ -85,8 +85,7 @@ services:
     volumes:
       - /portainer/Files/AppData/Config/Authelia:/config
     restart: unless-stopped
-    expose:
-      - 9091
+    ports:
+      - 9091:9091
     networks:
-      - private
-      - public
+      - t2_proxy
