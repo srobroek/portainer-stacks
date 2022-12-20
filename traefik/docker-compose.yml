@@ -13,7 +13,7 @@ services:
   traefik:
     container_name: traefik
     networks:
-      t2_proxy:
+      - t2_proxy
     security_opt:
       - no-new-privileges:true
     restart: always
@@ -115,17 +115,16 @@ services:
     volumes:
       - /portainer/Files/AppData/Config/Authelia:/config
     restart: unless-stopped
-#    ports:
-#      - 9091:9091
+
     networks:
-      t2_proxy:
-  labels:
-    - "traefik.enable=true"
-    ## HTTP Routers
-    - "traefik.http.routers.authelia-rtr.entrypoints=https"
-    - "traefik.http.routers.authelia-rtr.rule=HostHeader(`authelia.vxsan.com`)"
-    ## Middlewares
-    - "traefik.http.routers.authelia-rtr.middlewares=chain-authelia@file"
-    ## HTTP Services
-    - "traefik.http.routers.authelia-rtr.service=authelia-svc"
-    - "traefik.http.services.authelia-svc.loadbalancer.server.port=9091"
+      - t2_proxy
+    labels:
+      - "traefik.enable=true"
+      ## HTTP Routers
+      - "traefik.http.routers.authelia-rtr.entrypoints=https"
+      - "traefik.http.routers.authelia-rtr.rule=HostHeader(`authelia.vxsan.com`)"
+      ## Middlewares
+      - "traefik.http.routers.authelia-rtr.middlewares=chain-authelia@file"
+      ## HTTP Services
+      - "traefik.http.routers.authelia-rtr.service=authelia-svc"
+      - "traefik.http.services.authelia-svc.loadbalancer.server.port=9091"
