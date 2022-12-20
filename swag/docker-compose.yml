@@ -1,0 +1,25 @@
+version: "3"
+services:
+  swag:
+    image: lscr.io/linuxserver/swag:latest
+    container_name: swag
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID
+      - PGID
+      - TZ
+      - URL
+      - SUBDOMAINS
+      - VALIDATION
+      - DNSPLUGIN
+      - EMAIL
+    volumes:
+      - /portainer/Files/AppData/Config/LetsEncrypt:/config
+    ports:
+      - 443:443
+      - 80:80
+    labels:
+      - com.centurylinklabs.watchtower.enable=true
+      - deunhealth.restart.on.unhealthy=true
