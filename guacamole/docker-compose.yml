@@ -55,7 +55,7 @@ services:
       - "traefik.http.routers.guac-rtr.entrypoints=https"
       - "traefik.http.routers.guac-rtr.rule=HostHeader(`guac.vxsan.com`)"
       ## Middlewares
-      - "traefik.http.routers.guac-rtr.middlewares=chain-authelia@file"
+      - "traefik.http.routers.guac-rtr.middlewares=chain-basic-auth@file"
       ## HTTP Services
       #- "traefik.http.routers.guac-rtr.service=guac_guacamole-svc"
       # - "traefik.http.services.guac-svc.loadbalancer.server.port=8080"
