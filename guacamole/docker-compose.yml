@@ -57,5 +57,5 @@ services:
       ## Middlewares
       - "traefik.http.routers.guac-rtr.middlewares=chain-authelia@file"
       ## HTTP Services
-      - "traefik.http.routers.guac-rtr.service=guac_guacamole-svc"
-      - "traefik.http.services.guac-svc.loadbalancer.server.port=8080"
+      #- "traefik.http.routers.guac-rtr.service=guac_guacamole-svc"
+      # - "traefik.http.services.guac-svc.loadbalancer.server.port=8080"
