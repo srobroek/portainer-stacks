@@ -44,4 +44,5 @@ services:
     #- 8080/tcp
     restart: always
     labels:
-      - "traefik.http.routers.whoami.rule=Host(`guac.vxsan.com`)"
+      - "traefik.http.routers.guacamole.rule=Host(`guac.vxsan.com`)"
+      - "traefik.http.routers.guacamole.tls=true"
