@@ -17,8 +17,7 @@ services:
       - TRUSTED_PROXIES
       - TZ
     #env_file: stack.env
-    publish:
-      - 8082:8080
+    published: 8082:8080
     depends_on:
       - db
 
@@ -45,8 +44,7 @@ services:
       - SPECTRE_SECRET
       - TRUSTED_PROXIES
       - VANITY_URL
-    publish:
-      - 8081:8080
+    published:  8081:8080
     depends_on:
       - app
 #volumes:
