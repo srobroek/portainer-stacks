@@ -55,10 +55,10 @@ services:
       - "traefik.http.routers.guac-rtr.entrypoints=https"
       - "traefik.http.routers.guac-rtr.rule=HostHeader(`guac.vxsan.com`)"
       ## Middlewares
-      - 'traefik.http.middlewares.authelia.forwardAuth.address=http://authelia:9091/api/verify?rd=https%3A%2F%2Fauth.vxsan.com%2F'
-      - 'traefik.http.middlewares.authelia.forwardAuth.trustForwardHeader=true'
-      - 'traefik.http.middlewares.authelia.forwardAuth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email'
-      #- "traefik.http.routers.guac-rtr.middlewares=chain-authelia@file"
+      #- 'traefik.http.middlewares.authelia.forwardAuth.address=http://authelia:9091/api/verify?rd=https%3A%2F%2Fauth.vxsan.com%2F'
+      #- 'traefik.http.middlewares.authelia.forwardAuth.trustForwardHeader=true'
+      #- 'traefik.http.middlewares.authelia.forwardAuth.authResponseHeaders=Remote-User,Remote-Groups,Remote-Name,Remote-Email'
+      - "traefik.http.routers.guac-rtr.middlewares=chain-authelia@file"
       ## HTTP Services
       #- "traefik.http.routers.guac-rtr.service=guac_guacamole-svc"
       # - "traefik.http.services.guac-svc.loadbalancer.server.port=8080"
