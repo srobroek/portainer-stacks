@@ -36,33 +36,33 @@ services:
     - CLOUDFLARE_DNS_API_TOKEN=$CLOUDFLARE_API_TOKEN
     - DOMAINNAME_CLOUD_SERVER # Passing the domain name to the traefik container to be able to use the variable in rules. 
     labels:
-          #- "autoheal=true"
-          - "traefik.enable=true"
-          # HTTP-to-HTTPS Redirect
-          - "traefik.http.routers.http-catchall.entrypoints=http"
-          - "traefik.http.routers.http-catchall.rule=HostRegexp(`{host:.+}`)"
-          - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
-          - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-          # HTTP Routers
-          - "traefik.http.routers.traefik-rtr.entrypoints=https"
-          - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_CLOUD_SERVER`)"
-          - "traefik.http.routers.traefik-rtr.tls=true" # Some people had 404s without this
-          - "traefik.http.routers.traefik-rtr.tls.certresolver=dns-cloudflare" # Comment out this line after first run of traefik to force the use of wildcard certs
-          - "traefik.http.routers.traefik-rtr.tls.domains[0].main=$DOMAINNAME_CLOUD_SERVER"
-          - "traefik.http.routers.traefik-rtr.tls.domains[0].sans=*.$DOMAINNAME_CLOUD_SERVER"
-          # - "traefik.http.routers.traefik-rtr.tls.domains[1].main=$DOMAINNAME2" # Pulls main cert for second domain
-          # - "traefik.http.routers.traefik-rtr.tls.domains[1].sans=*.$DOMAINNAME2" # Pulls wildcard cert for second domain
-          ## Services - API
-          - "traefik.http.routers.traefik-rtr.service=api@internal"
-          ## Healthcheck/ping
-          #- "traefik.http.routers.ping.rule=Host(`traefik.$DOMAINNAME_CLOUD_SERVER`) && Path(`/ping`)"
-          #- "traefik.http.routers.ping.tls=true"
-          #- "traefik.http.routers.ping.service=ping@internal"
-          ## Middlewares
-          #- "traefik.http.routers.traefik-rtr.middlewares=chain-no-auth@file" # For No Authentication
-          #- "traefik.http.routers.traefik-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
-          - "traefik.http.routers.traefik-rtr.middlewares=chain-oauth@file" # For Google OAuth
-          #- "traefik.http.routers.traefik-rtr.middlewares=chain-authelia@file" # For Authelia Authentication    
+      #- "autoheal=true"
+      - "traefik.enable=true"
+      # HTTP-to-HTTPS Redirect
+      - "traefik.http.routers.http-catchall.entrypoints=http"
+      - "traefik.http.routers.http-catchall.rule=HostRegexp(`{host:.+}`)"
+      - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      # HTTP Routers
+      - "traefik.http.routers.traefik-rtr.entrypoints=https"
+      - "traefik.http.routers.traefik-rtr.rule=Host(`traefik.$DOMAINNAME_CLOUD_SERVER`)"
+      - "traefik.http.routers.traefik-rtr.tls=true" # Some people had 404s without this
+      - "traefik.http.routers.traefik-rtr.tls.certresolver=dns-cloudflare" # Comment out this line after first run of traefik to force the use of wildcard certs
+      - "traefik.http.routers.traefik-rtr.tls.domains[0].main=$DOMAINNAME_CLOUD_SERVER"
+      - "traefik.http.routers.traefik-rtr.tls.domains[0].sans=*.$DOMAINNAME_CLOUD_SERVER"
+      # - "traefik.http.routers.traefik-rtr.tls.domains[1].main=$DOMAINNAME2" # Pulls main cert for second domain
+      # - "traefik.http.routers.traefik-rtr.tls.domains[1].sans=*.$DOMAINNAME2" # Pulls wildcard cert for second domain
+      ## Services - API
+      - "traefik.http.routers.traefik-rtr.service=api@internal"
+      ## Healthcheck/ping
+      #- "traefik.http.routers.ping.rule=Host(`traefik.$DOMAINNAME_CLOUD_SERVER`) && Path(`/ping`)"
+      #- "traefik.http.routers.ping.tls=true"
+      #- "traefik.http.routers.ping.service=ping@internal"
+      ## Middlewares
+      - "traefik.http.routers.traefik-rtr.middlewares=chain-no-auth@file" # For No Authentication
+      #- "traefik.http.routers.traefik-rtr.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
+      # - "traefik.http.routers.traefik-rtr.middlewares=chain-oauth@file" # For Google OAuth
+      #- "traefik.http.routers.traefik-rtr.middlewares=chain-authelia@file" # For Authelia Authentication    
     command: # CLI arguments
       - --global.checkNewVersion=true
       - --global.sendAnonymousUsage=true
