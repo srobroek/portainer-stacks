@@ -1,4 +1,9 @@
 version: "3.3"
+networks:
+  default:
+    name: private
+    external: true
+
 services:
   # guacd
   guacd:

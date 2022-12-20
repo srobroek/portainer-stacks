@@ -1,4 +1,13 @@
 version: "3"
+
+networks:
+  private:
+    name: private
+    driver: overlay
+  public:
+    name: public
+    driver: overlay
+
 services:
   swag:
     image: lscr.io/linuxserver/swag:latest
@@ -20,6 +29,9 @@ services:
     ports:
       - 443:443
       - 80:80
+    networks:
+      - private
+      - public
   authelia:
     image: docker.io/authelia/authelia:latest
     #container_name: authelia
@@ -29,3 +41,6 @@ services:
     restart: unless-stopped
     expose:
       - 9091
+    networks:
+      - private
+      - public
