@@ -1,8 +1,8 @@
 version: '3'
 networks:
-  swag-proxy_private:
+  default:
+    name: swag-proxy_private
     external: true
-
 services:
   app:
     image: fireflyiii/core:latest
