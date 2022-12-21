@@ -137,6 +137,7 @@ services:
       ## HTTP Routers
       - "traefik.http.routers.authelia-rtr.entrypoints=https"
       - "traefik.http.routers.authelia-rtr.rule=HostHeader(`authelia.vxsan.com`)"
+      - "traefik.http.routers.authelia-rtr.tls=true"       
       ## Middlewares
       - "traefik.http.routers.authelia-rtr.middlewares=chain-no-auth@file"
       ## HTTP Services
