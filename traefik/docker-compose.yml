@@ -75,6 +75,9 @@ services:
       - --global.sendAnonymousUsage=true
       - --entryPoints.http.address=:80
       - --entryPoints.https.address=:443
+        --entryPoints.qbittorrent-udp.address=:11531/udp
+        --entryPoints.qbittorrent-tcp.address=:11531/tcp
+
       # Allow these IPs to set the X-Forwarded-* headers - Cloudflare IPs: https://www.cloudflare.com/ips/
       - --entrypoints.https.forwardedHeaders.trustedIPs=$CLOUDFLARE_IPS,$LOCAL_IPS
       - --entryPoints.traefik.address=:8080
