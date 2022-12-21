@@ -1,0 +1,167 @@
+version: '3.7'
+networks:
+  t2_internal:
+    external: true
+
+services:
+  sonarr:
+    container_name: sonarr
+    image: cr.hotio.dev/hotio/sonarr
+    restart: always
+    networks:
+      - t2_internal    
+    expose:
+      - 8989
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Asia/Dubai
+    volumes:
+      - /portainer/Files/AppData/Config/Sonarr:/config
+      - /portainer/media/TV:/tv
+      - /portainer/media/staging:/downloads
+    depends_on:
+      - qbittorrent   
+      - prowlarr  
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.media.entrypoints=https"
+      - "traefik.http.routers.media.middlewares=chain-authelia@file"       
+      - "traefik.http.routers.media.rule=Host(`sonarr.vxsan.com`)"
+      
+
+  radarr:
+    container_name: radarr
+    image: cr.hotio.dev/hotio/radarr
+    restart: always    
+    networks:
+      - t2_internal        
+    expose:
+      - 7878
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Asia/Dubai
+    volumes:
+      - /portainer/Files/AppData/Config/Radarr:/config
+      - /portainer/media/Movies:/movies
+      - /portainer/media/staging:/downloads
+    depends_on:
+      - qbittorrent   
+      - prowlarr 
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.media.rule=Host(`radarr.vxsan.com`)"
+
+  readarr:
+    container_name: readarr
+    image: cr.hotio.dev/hotio/readarr
+    restart: always    
+    expose:
+      - 8787
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Asia/Dubai
+    volumes:
+      - /portainer/Files/AppData/Config/Readarr:/config
+      - /portainer/media/Books:/books
+      - /portainer/media/staging:/downloads
+    depends_on:
+      - qbittorrent   
+      - prowlarr   
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.media.rule=Host(`readarr.vxsan.com`)"
+
+  qbittorrent:
+    container_name: qbittorrent
+    image: cr.hotio.dev/hotio/qbittorrent
+    restart: always    
+    expose:
+      - 8080
+      - 1886
+      - 1886/udp    
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Asia/Dubai
+    volumes:
+      - /portainer/Files/AppData/Config/qBittorrent:/config
+      - /portainer/media/staging:/staging
+      - /portainer/media:/media
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.media.rule=Host(`qb.vxsan.com`)"
+
+
+  prowlarr:
+    container_name: prowlarr
+    image: cr.hotio.dev/hotio/prowlarr
+    restart: always    
+    expose:
+      - 9696
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Asia/Dubai
+    volumes:
+      - /portainer/Files/AppData/Config/Prowlarr:/config:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.media.rule=Host(`prowlarr.vxsan.com`)"
+
+  overseerr:
+    container_name: overseerr
+    image: cr.hotio.dev/hotio/overseerr
+    restart: always    
+    expose:
+      - 5005
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Asia/Dubai
+    volumes:
+      - /portainer/Files/AppData/Config/Overseerr:/config:/config
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.media.rule=Host(`overseerr.vxsan.com`)"
+
+  bazarr:
+    container_name: bazarr
+    image: cr.hotio.dev/hotio/bazarr
+    restart: always    
+    expose:
+      - 6767
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - UMASK=002
+      - TZ=Asia/Dubai
+    volumes:
+      - /portainer/Files/AppData/Config/Bazarr:/config:/config
+    depends_on:
+      - qbittorrent   
+      - prowlarr 
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.media.rule=Host(`bazarr.vxsan.com`)"      
+
+  homarr:
+    container_name: homarr
+    image: ghcr.io/ajnart/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - /portainer/Files/AppData/Config/Homarr/configs:/app/data/configs
+      - /portainer/Files/AppData/Config/Homarr/icons:/app/public/icons
+    expose:
+      - 7575    
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.media.rule=Host(`homarr.vxsan.com`) || Host(`home.vxsan.com`)"          
