@@ -91,6 +91,7 @@ services:
       - t2_internal       
     expose:
       - 8080
+    ports:
       - 11531
       - 11531/udp    
     environment:
