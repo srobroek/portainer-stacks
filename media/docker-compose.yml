@@ -100,7 +100,7 @@ services:
       - TZ=Asia/Dubai
     volumes:
       - /portainer/Files/AppData/Config/qBittorrent:/config
-      - /portainer/media/staging:/staging
+      - /portainer/media/staging:/downloads
       - /portainer/media:/media
     labels:
       - "traefik.enable=true"
