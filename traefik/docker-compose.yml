@@ -1,9 +1,9 @@
 version: "3.9"
 
 networks:
-  t2_external:
-    name: t2_external
-    driver: bridge
+#   t2_external:
+#     name: t2_external
+#     driver: bridge
   t2_internal:
     name: t2_internal
     driver: bridge
@@ -16,7 +16,7 @@ services:
   traefik:
     container_name: traefik
     networks:
-      - t2_external
+#       - t2_external
       - t2_internal
     security_opt:
       - no-new-privileges:true
