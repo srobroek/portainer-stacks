@@ -128,8 +128,8 @@ services:
     volumes:
       - /portainer/Files/AppData/Config/Authelia:/config
 
-    ports:
-      - 9091:9091
+#     ports:
+#       - 9091:9091
     networks:
       - t2_internal
     labels:
