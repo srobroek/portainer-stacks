@@ -6,6 +6,8 @@ services:
   # guacd
   guacd:
 #    container_name: guacd_compose
+    networks:
+      - t2_internal
     image: guacamole/guacd
     restart: always
     volumes:
@@ -14,6 +16,8 @@ services:
   # postgres
   postgres:
 #    container_name: postgres_guacamole_compose
+    networks:
+      - t2_internal
     environment:
       - PGDATA
       - POSTGRES_DB
