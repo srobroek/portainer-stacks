@@ -77,7 +77,7 @@ services:
       - prowlarr   
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.media-rtr.rule=Host(`readarr.vxsan.com`)"
+      - "traefik.http.routers.radarr-rtr.rule=Host(`readarr.vxsan.com`)"
 
   qbittorrent:
     container_name: qbittorrent
