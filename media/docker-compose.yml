@@ -107,8 +107,8 @@ services:
       - "traefik.http.routers.qb-rtr.entrypoints=https"
       - "traefik.http.routers.qb-rtr.middlewares=chain-authelia@file"            
       - "traefik.http.routers.qb-rtr.rule=Host(`qb.vxsan.com`)"
-      - "traefik.tcp.routers.qb-rtr.entrypoints=11531"
-      - "traefik.udp.routers.qb-rtr.entrypoints=11531"
+      - "traefik.tcp.routers.qb-rtr.entrypoints=11531/tcp"
+      - "traefik.udp.routers.qb-rtr.entrypoints=11531/udp"
 
 
 
