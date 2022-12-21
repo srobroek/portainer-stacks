@@ -61,6 +61,8 @@ services:
     container_name: readarr
     image: cr.hotio.dev/hotio/readarr
     restart: always    
+    networks:
+      - t2_internal       
     expose:
       - 8787
     environment:
@@ -85,6 +87,8 @@ services:
     container_name: qbittorrent
     image: cr.hotio.dev/hotio/qbittorrent
     restart: always    
+    networks:
+      - t2_internal       
     expose:
       - 8080
       - 1886
@@ -110,6 +114,8 @@ services:
     container_name: prowlarr
     image: cr.hotio.dev/hotio/prowlarr
     restart: always    
+    networks:
+      - t2_internal       
     expose:
       - 9696
     environment:
@@ -129,6 +135,8 @@ services:
     container_name: overseerr
     image: cr.hotio.dev/hotio/overseerr
     restart: always    
+    networks:
+      - t2_internal       
     expose:
       - 5005
     environment:
@@ -148,6 +156,8 @@ services:
     container_name: bazarr
     image: cr.hotio.dev/hotio/bazarr
     restart: always    
+    networks:
+      - t2_internal       
     expose:
       - 6767
     environment:
@@ -170,6 +180,8 @@ services:
     container_name: homarr
     image: ghcr.io/ajnart/homarr:latest
     restart: unless-stopped
+    networks:
+      - t2_internal       
     volumes:
       - /portainer/Files/AppData/Config/Homarr/configs:/app/data/configs
       - /portainer/Files/AppData/Config/Homarr/icons:/app/public/icons
