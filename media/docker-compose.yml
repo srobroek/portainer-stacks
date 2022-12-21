@@ -19,7 +19,7 @@ services:
       - TZ=Asia/Dubai
     volumes:
       - /portainer/Files/AppData/Config/Sonarr:/config
-      - /portainer/media/TV:/tv
+      - /portainer/media/Series:/tv
       - /portainer/media/staging:/downloads
     depends_on:
       - qbittorrent   
