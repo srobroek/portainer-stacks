@@ -123,7 +123,7 @@ services:
     
   authelia:
     image: docker.io/authelia/authelia:latest
-    #container_name: authelia
+    container_name: authelia
     #environment:
     volumes:
       - /portainer/Files/AppData/Config/Authelia:/config
