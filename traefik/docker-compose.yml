@@ -3,10 +3,10 @@ version: "3.9"
 networks:
   t2_external:
     name: t2_external
-    driver: overlay
+    driver: bridge
   t2_internal:
     name: t2_internal
-    driver: overlay
+    driver: bridge
   default:
     driver: bridge
 
