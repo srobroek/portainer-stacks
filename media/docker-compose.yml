@@ -26,9 +26,9 @@ services:
       - prowlarr  
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.media.entrypoints=https"
-      - "traefik.http.routers.media.middlewares=chain-authelia@file"       
-      - "traefik.http.routers.media.rule=Host(`sonarr.vxsan.com`)"
+      - "traefik.http.routers.media-rtr.entrypoints=https"
+      - "traefik.http.routers.media-rtr.middlewares=chain-authelia@file"       
+      - "traefik.http.routers.media-rtr.rule=Host(`sonarr.vxsan.com`)"
       
 
   radarr:
@@ -53,7 +53,7 @@ services:
       - prowlarr 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.media.rule=Host(`radarr.vxsan.com`)"
+      - "traefik.http.routers.media-rtr.rule=Host(`radarr.vxsan.com`)"
 
   readarr:
     container_name: readarr
@@ -75,7 +75,7 @@ services:
       - prowlarr   
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.media.rule=Host(`readarr.vxsan.com`)"
+      - "traefik.http.routers.media-rtr.rule=Host(`readarr.vxsan.com`)"
 
   qbittorrent:
     container_name: qbittorrent
@@ -96,7 +96,7 @@ services:
       - /portainer/media:/media
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.media.rule=Host(`qb.vxsan.com`)"
+      - "traefik.http.routers.media-rtr.rule=Host(`qb.vxsan.com`)"
 
 
   prowlarr:
@@ -114,7 +114,7 @@ services:
       - /portainer/Files/AppData/Config/Prowlarr:/config:/config
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.media.rule=Host(`prowlarr.vxsan.com`)"
+      - "traefik.http.routers.media-rtr.rule=Host(`prowlarr.vxsan.com`)"
 
   overseerr:
     container_name: overseerr
@@ -131,7 +131,7 @@ services:
       - /portainer/Files/AppData/Config/Overseerr:/config:/config
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.media.rule=Host(`overseerr.vxsan.com`)"
+      - "traefik.http.routers.media-rtr.rule=Host(`overseerr.vxsan.com`)"
 
   bazarr:
     container_name: bazarr
@@ -151,7 +151,7 @@ services:
       - prowlarr 
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.media.rule=Host(`bazarr.vxsan.com`)"      
+      - "traefik.http.routers.media-rtr.rule=Host(`bazarr.vxsan.com`)"      
 
   homarr:
     container_name: homarr
@@ -164,4 +164,4 @@ services:
       - 7575    
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.media.rule=Host(`homarr.vxsan.com`) || Host(`home.vxsan.com`)"          
+      - "traefik.http.routers.media-rtr.rule=Host(`homarr.vxsan.com`) || Host(`home.vxsan.com`)"          
