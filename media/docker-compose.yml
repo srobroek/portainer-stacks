@@ -29,6 +29,7 @@ services:
       - "traefik.http.routers.sonarr-rtr.entrypoints=https"
       - "traefik.http.routers.sonarr-rtr.middlewares=chain-authelia@file"       
       - "traefik.http.routers.sonarr-rtr.rule=Host(`sonarr.vxsan.com`)"
+      - "traefik.http.routers.sonarr-rtr.tls=true" 
       
 
   radarr:
@@ -56,6 +57,7 @@ services:
       - "traefik.http.routers.radarr-rtr.entrypoints=https"
       - "traefik.http.routers.radarr-rtr.middlewares=chain-authelia@file"            
       - "traefik.http.routers.radarr-rtr.rule=Host(`radarr.vxsan.com`)"
+      - "traefik.http.routers.radarr-rtr.tls=true" 
 
   readarr:
     container_name: readarr
@@ -82,7 +84,8 @@ services:
       - "traefik.http.routers.readarr-rtr.entrypoints=https"
       - "traefik.http.routers.readarr-rtr.middlewares=chain-authelia@file"            
       - "traefik.http.routers.readarr-rtr.rule=Host(`readarr.vxsan.com`)"
-
+      - "traefik.http.routers.readarr-rtr.tls=true" 
+      
   qbittorrent:
     container_name: qbittorrent
     image: cr.hotio.dev/hotio/qbittorrent
@@ -108,6 +111,7 @@ services:
       - "traefik.http.routers.qb-rtr.entrypoints=https"
       - "traefik.http.routers.qb-rtr.middlewares=chain-authelia@file"            
       - "traefik.http.routers.qb-rtr.rule=Host(`qb.vxsan.com`)"
+      - "traefik.http.routers.qb-rtr.tls=true"       
 
 
 
@@ -131,6 +135,7 @@ services:
       - "traefik.http.routers.prowlarr-rtr.entrypoints=https"
       - "traefik.http.routers.prowlarr-rtr.middlewares=chain-authelia@file"            
       - "traefik.http.routers.prowlarr-rtr.rule=Host(`prowlarr.vxsan.com`)"
+      - "traefik.http.routers.prowlarr-rtr.tls=true"       
 
   overseerr:
     container_name: overseerr
@@ -152,7 +157,7 @@ services:
       - "traefik.http.routers.overseerr-rtr.entrypoints=https"
       - "traefik.http.routers.overseerr-rtr.middlewares=chain-authelia@file"            
       - "traefik.http.routers.overseerr-rtr.rule=Host(`overseerr.vxsan.com`)"
-
+      - "traefik.http.routers.overseerr-rtr.tls=true" 
   bazarr:
     container_name: bazarr
     image: cr.hotio.dev/hotio/bazarr
@@ -176,6 +181,7 @@ services:
       - "traefik.http.routers.bazarr-rtr.entrypoints=https"
       - "traefik.http.routers.bazarr-rtr.middlewares=chain-authelia@file"            
       - "traefik.http.routers.bazarr-rtr.rule=Host(`bazarr.vxsan.com`)"   
+      - "traefik.http.routers.bazarr-rtr.tls=true"       
 
   homarr:
     container_name: homarr
@@ -192,4 +198,5 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.homarr-rtr.rule=Host(`homarr.vxsan.com`) || Host(`home.vxsan.com`)"          
       - "traefik.http.routers.homarr-rtr.entrypoints=https"
-      - "traefik.http.routers.homarr-rtr.middlewares=chain-authelia@file"            
+      - "traefik.http.routers.homarr-rtr.middlewares=chain-authelia@file"      
+      - "traefik.http.routers.homarr-rtr.tls=true"       
