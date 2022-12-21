@@ -76,7 +76,7 @@ services:
       - --entryPoints.http.address=:80
       - --entryPoints.https.address=:443
       - --entryPoints.qbittorrentudp.address=:11531/udp
-      - --entryPoints.qbittorrenttcp.address=:11531
+      - --entryPoints.qbittorrenttcp.address=:11531/tcp
 
       # Allow these IPs to set the X-Forwarded-* headers - Cloudflare IPs: https://www.cloudflare.com/ips/
       - --entrypoints.https.forwardedHeaders.trustedIPs=$CLOUDFLARE_IPS,$LOCAL_IPS
