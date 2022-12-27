@@ -25,7 +25,7 @@ services:
       - TZ
     #env_file: stack.env
     expose:
-      - 8082:8080
+      - 8080
     depends_on:
       - db
     labels:
