@@ -7,6 +7,7 @@ services:
   app:
     image: fireflyiii/core:latest
     restart: always
+    container_name: firefly_app
     networks:
       - t2_internal
     volumes:
@@ -25,6 +26,7 @@ services:
     #env_file: stack.env
     expose:
       - 8080
+      - 8082:8080
     depends_on:
       - db
     labels:
@@ -58,6 +60,7 @@ services:
   fidi:
     image: fireflyiii/data-importer:latest
     restart: always
+    container_name: firefly_fidi
     networks:
       - t2_internal    
 #    env_file: stack.env
